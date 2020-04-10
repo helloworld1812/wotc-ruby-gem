@@ -1,7 +1,6 @@
 require File.expand_path('../wotc/error', __FILE__)
 require File.expand_path('../wotc/api', __FILE__)
 require File.expand_path('../wotc/client', __FILE__)
-require File.expand_path('../wotc/response', __FILE__)
 
 module WOTC
   extend Configuration
