@@ -25,7 +25,7 @@ Or install it yourself as:
 
     $ gem install wotc-ruby-gem
 
-## Usage Example
+## Usage Examples
 
 ```
 # Provide authentication credential
@@ -69,3 +69,15 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Wotc::Ruby::Gem project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/wotc-ruby-gem/blob/master/CODE_OF_CONDUCT.md).
+
+## Reference
+
+**Good examples of API Wrapper**
+
+- [Octokit](https://github.com/octokit/octokit.rb/blob/master/lib/octokit/client.rb)
+- [Instagram](https://github.com/Instagram/instagram-ruby-gem/blob/master/lib/instagram/client.rb)
+- [Twitter](https://github.com/sferik/twitter/blob/master/lib/twitter/rest/api.rb)
+
+
+
+
