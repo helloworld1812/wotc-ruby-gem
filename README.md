@@ -4,6 +4,11 @@
 
 Ruby toolkit for wotc.com API
 
+## wotc.com REST APIs and documentation
+
+1. Go to the [developer site](https://sandbox.wotc.com/portal/api/documentation) of wotc.com and create an sandbox account.
+2. create an access token in the [integration console](https://sandbox.wotc.com/portal/client/account/integrations#show-access-token).
+
 ## quick start
 
 Add this line to your application's Gemfile:
@@ -20,13 +25,10 @@ Or install it yourself as:
 
     $ gem install wotc-ruby-gem
 
-## Making request
+## Usage Example
 
 ```
 # Provide authentication credential
-# How to get access token?
-# https://sandbox.wotc.com/portal/client/account/integrations#show-access-token
- 
 client = WOTC::Client.new(access_token: 'your access token')
 
 # Fetch the employees of current commpany
