@@ -27,7 +27,7 @@ Or install it yourself as:
 # How to get access token?
 # https://sandbox.wotc.com/portal/client/account/integrations#show-access-token
  
-client = WOTC::Client.new(access_token: 'your access token)
+client = WOTC::Client.new(access_token: 'your access token')
 
 # Fetch the employees of current commpany
 client.employees
