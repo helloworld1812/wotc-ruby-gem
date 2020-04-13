@@ -36,7 +36,7 @@ module WOTC
     # The endpoint that will be used to connect if none is set
     #
     # @note There is no reason to use any other endpoint at this time
-    DEFAULT_ENDPOINT = 'https://sandbox.wotc.com/portal/api/v1'.freeze
+    DEFAULT_ENDPOINT = 'https://sandbox.wotc.com/portal/api/v1/'.freeze
 
     # The response format appended to the path and sent in the 'Accept' header if none is set
     #

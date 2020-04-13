@@ -1,0 +1,51 @@
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": 3988,
+      "company_id": 519,
+      "location_id": 0,
+      "first_name": "Lei",
+      "last_name": "Xu",
+      "ssn": "111111111",
+      "started_on": "2020-01-01",
+      "dob": "2020-01-01T00:00:00+00:00",
+      "address_street": "162 South Park Street",
+      "address_street2": "",
+      "address_city": "",
+      "address_state": "CA",
+      "address_county": "",
+      "address_zipcode": "",
+      "created_at": "2020-02-11T21:08:09+00:00",
+      "updated_at": "2020-03-30T06:30:56+00:00"
+    },
+    {
+      "id": 4076,
+      "company_id": 519,
+      "location_id": 0,
+      "first_name": "Lei",
+      "last_name": "Xu",
+      "ssn": "111111118",
+      "started_on": "2020-01-01",
+      "dob": "1980-01-01T00:00:00+00:00",
+      "address_street": "162 South Park Street",
+      "address_street2": "",
+      "address_city": "",
+      "address_state": "CA",
+      "address_county": "",
+      "address_zipcode": "",
+      "created_at": "2020-02-27T00:15:15+00:00",
+      "updated_at": "2020-04-07T06:22:37+00:00"
+    }
+  ],
+  "first_page_url": "https://sandbox.wotc.com/portal/api/v1/employees?page=1",
+  "from": 1,
+  "last_page": 2,
+  "last_page_url": "https://sandbox.wotc.com/portal/api/v1/employees?page=2",
+  "next_page_url": "https://sandbox.wotc.com/portal/api/v1/employees?page=2",
+  "path": "https://sandbox.wotc.com/portal/api/v1/employees",
+  "per_page": "2",
+  "prev_page_url": null,
+  "to": 2,
+  "total": 4
+}

@@ -1,0 +1,51 @@
+{
+  "current_page": 2,
+  "data": [
+    {
+      "id": 4221,
+      "company_id": 519,
+      "location_id": 0,
+      "first_name": "Ryan",
+      "last_name": "Lv",
+      "ssn": "3141244414",
+      "started_on": "2020-03-30",
+      "dob": "0001-01-01T00:00:00+00:00",
+      "address_street": "",
+      "address_street2": "",
+      "address_city": "",
+      "address_state": "",
+      "address_county": "",
+      "address_zipcode": "",
+      "created_at": "2020-03-30T03:16:41+00:00",
+      "updated_at": "2020-03-30T03:16:41+00:00"
+    },
+    {
+      "id": 4229,
+      "company_id": 519,
+      "location_id": 0,
+      "first_name": "Ryan",
+      "last_name": "Lv",
+      "ssn": "333333134",
+      "started_on": "2019-02-03",
+      "dob": "1982-01-01T00:00:00+00:00",
+      "address_street": "younk",
+      "address_street2": "",
+      "address_city": "new york",
+      "address_state": "new york",
+      "address_county": "",
+      "address_zipcode": "333333",
+      "created_at": "2020-03-31T03:45:52+00:00",
+      "updated_at": "2020-03-31T06:53:18+00:00"
+    }
+  ],
+  "first_page_url": "https://sandbox.wotc.com/portal/api/v1/employees?page=1",
+  "from": 3,
+  "last_page": 2,
+  "last_page_url": "https://sandbox.wotc.com/portal/api/v1/employees?page=2",
+  "next_page_url": null,
+  "path": "https://sandbox.wotc.com/portal/api/v1/employees",
+  "per_page": "2",
+  "prev_page_url": "https://sandbox.wotc.com/portal/api/v1/employees?page=1",
+  "to": 4,
+  "total": 4
+}

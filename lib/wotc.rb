@@ -9,7 +9,7 @@ module WOTC
   #
   # @return [WOTC::Client]
   def self.client(options={})
-    WTOC::Client.new(options)
+    ::WOTC::Client.new(options)
   end
 
   # Delegate to WOTC::Client
