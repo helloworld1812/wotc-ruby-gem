@@ -13,18 +13,23 @@ module WOTC
       :format,
       :proxy,
       :user_agent,
+      :auto_paginate,
+      :per_page,
     ].freeze
 
     # By default, don't set an access token
     DEFAULT_ACCESS_TOKEN = nil
 
+    # By default, enable auto-paginate
+    DEFAULT_AUTO_PAGINATE = true
+
+    # By default, return 20 resources per page when there is an pagination.
+    DEFAULT_PER_PAGE = 20
+
     # The adapter that will be used to connect if none is set
     #
     # @note The default faraday adapter is Net::HTTP.
     DEFAULT_ADAPTER = Faraday.default_adapter
-
-    # By default, don't set an application ID
-    DEFAULT_CLIENT_ID = nil
 
     # By default, don't set any connection options
     DEFAULT_CONNECTION_OPTIONS = {}
@@ -32,7 +37,7 @@ module WOTC
     # The endpoint that will be used to connect if none is set
     #
     # @note There is no reason to use any other endpoint at this time
-    DEFAULT_ENDPOINT = 'https://sandbox.wotc.com/portal/api/v1/'.freeze
+    DEFAULT_ENDPOINT = 'https://sandbox.wotc.com/portal/api/v1'.freeze
 
     # The response format appended to the path and sent in the 'Accept' header if none is set
     #
@@ -77,6 +82,8 @@ module WOTC
       self.format             = DEFAULT_FORMAT
       self.proxy              = DEFAULT_PROXY
       self.user_agent         = DEFAULT_USER_AGENT
+      self.auto_paginate      = DEFAULT_AUTO_PAGINATE
+      self.per_page           = DEFAULT_PER_PAGE
     end
   end
 end

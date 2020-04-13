@@ -20,6 +20,7 @@ module WOTC
         conn.authorization :Bearer, access_token
         conn.request :json
 
+        conn.use FaradayMiddleWare::RaiseHttpException
         conn.response :json, content_type: /\bjson$/
         conn.adapter Faraday.default_adapter
       end

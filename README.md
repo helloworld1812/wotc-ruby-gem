@@ -1,9 +1,11 @@
-# Wotc::Ruby::Gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wotc/ruby/gem`. To experiment with that code, run `bin/console` for an interactive prompt.
+# wotc-ruby-gem
 
+Ruby toolkit for wotc.com API
 
-## Installation
+![WOTC_logo_header-02](https://user-images.githubusercontent.com/1224077/79107910-d97bc880-7da7-11ea-95a3-40be03be614c.png)
+
+## quick start
 
 Add this line to your application's Gemfile:
 
@@ -19,9 +21,24 @@ Or install it yourself as:
 
     $ gem install wotc-ruby-gem
 
-## Usage
+## Making request
 
-TODO: Write usage instructions here
+```ruby
+# Provide authentication credential
+# How to get access token?
+# https://sandbox.wotc.com/portal/client/account/integrations#show-access-token
+ 
+client = WOTC::Client.new(access_token: 'your access token)
+
+# Fetch the employees of current commpany
+client.employees
+
+# fetch the settings of a company
+client.get_company_settings
+
+# list all webhooks of a company
+client.webhooks
+```
 
 ## Development
 
@@ -32,6 +49,17 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/helloworld1812/wotc-ruby-gem. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+Here are some ways you can contribute:
+
+- by reporting bugs
+- by suggesting new features
+- by writing or editing documentation
+- by writing test case
+- by writing code (no patch is too small: fix typos, add comments, clean up inconsistent whitespace)
+- by refactoring code
+- by closing issues
+- by reviewing patches
 
 ## License
 

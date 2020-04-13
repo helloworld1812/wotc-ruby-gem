@@ -19,4 +19,7 @@ module WOTC
 
   # Raised when wotc.com returns the HTTP status code 504
   class GatewayTimeout < Error; end
+
+  # Raised when client fails to provide required parameters.
+  class MissingRequiredArgument < Error; end
 end

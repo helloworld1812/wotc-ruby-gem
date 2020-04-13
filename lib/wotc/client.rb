@@ -14,6 +14,7 @@ module WOTC
     include WOTC::Client::Locations
     include WOTC::Client::Webhooks
     include WOTC::Client::Users
-    include WOTC::Client::Misc
+    include WOTC::Client::Registers
+    include WOTC::Client::Wotcs
   end
 end
