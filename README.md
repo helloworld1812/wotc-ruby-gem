@@ -1,9 +1,8 @@
+![WOTC_logo_header-02](https://user-images.githubusercontent.com/1224077/79107910-d97bc880-7da7-11ea-95a3-40be03be614c.png)
 
 # wotc-ruby-gem
 
 Ruby toolkit for wotc.com API
-
-![WOTC_logo_header-02](https://user-images.githubusercontent.com/1224077/79107910-d97bc880-7da7-11ea-95a3-40be03be614c.png)
 
 ## quick start
 
@@ -23,7 +22,7 @@ Or install it yourself as:
 
 ## Making request
 
-```ruby
+```
 # Provide authentication credential
 # How to get access token?
 # https://sandbox.wotc.com/portal/client/account/integrations#show-access-token
