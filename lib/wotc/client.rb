@@ -16,5 +16,6 @@ module WOTC
     include WOTC::Client::Users
     include WOTC::Client::Registers
     include WOTC::Client::Wotcs
+    include WOTC::Client::Utils
   end
 end

@@ -58,7 +58,7 @@ module WOTC
         end
       end
 
-      return response.body
+      response
     end
   end
 end

@@ -5,6 +5,9 @@ module WOTC
   # Raised when wotc.com returns the HTTP status code 400
   class BadRequest < Error; end
 
+  # Raised when wotc.com returns the HTTP status code 401
+  class Unauthorized < Error; end
+
   # Raised when wotc.com returns the HTTP status code 404
   class NotFound < Error; end
 

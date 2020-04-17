@@ -11,6 +11,8 @@ module FaradayMiddleWare
         case response.status.to_i
         when 400
           raise WOTC::BadRequest, error_message(env)
+        when 401
+          raise WOTC::Unauthorized, error_message(env)
         when 404
           raise WOTC::NotFound, error_message(env)
         when 500
@@ -28,7 +30,7 @@ module FaradayMiddleWare
     private
 
     def error_message(env)
-      "\nURL: #{env.url}\nmethod: #{env.method} \nstatus: #{env.status}\nerrors: #{env.response.body}"
+      "\nURL: #{env.url}\nmethod: #{env.method} \nresponse status: #{env.status}\nresponse body: #{env.response.body}"
     end
   end
 end

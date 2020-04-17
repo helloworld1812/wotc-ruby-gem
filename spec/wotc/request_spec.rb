@@ -34,7 +34,7 @@ describe WOTC::Request do
           body: fixture("user.json")
       }
       stub_get("user").to_return(response)
-      result = WOTC::Client.new(access_token: "token").send(:get, WOTC::Configuration::DEFAULT_ENDPOINT + "user")
+      result = WOTC::Client.new(access_token: "token").send(:get, WOTC::Configuration::DEFAULT_ENDPOINT + "user").body
       expect(result["id"]).to eq(516)
     end
   end
