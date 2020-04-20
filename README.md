@@ -1,8 +1,10 @@
 ![WOTC_logo_header-02](https://user-images.githubusercontent.com/1224077/79107910-d97bc880-7da7-11ea-95a3-40be03be614c.png)
 
+
 # wotc-ruby-gem
 
-Ruby toolkit for wotc.com API
+Ruby toolkit for wotc.com API [![Build Status](https://secure.travis-ci.org/helloworld1812/wotc-ruby-gem.svg)](http://travis-ci.org/helloworld1812/wotc-ruby-gem)
+
 
 ## wotc.com REST APIs and documentation
 
