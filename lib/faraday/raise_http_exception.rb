@@ -10,27 +10,21 @@ module FaradayMiddleWare
       @app.call(env).on_complete do |response|
         case response.status.to_i
         when 400
-          raise WOTC::BadRequest, error_message(env)
+          raise WOTC::BadRequest.new(response)
         when 401
-          raise WOTC::Unauthorized, error_message(env)
+          raise WOTC::Unauthorized.new(response)
         when 404
-          raise WOTC::NotFound, error_message(env)
+          raise WOTC::NotFound.new(response)
         when 500
-          raise WOTC::InternalServerError, error_message(env)
+          raise WOTC::InternalServerError.new(response)
         when 502
-          raise WOTC::BadGateway, error_message(env)
+          raise WOTC::BadGateway.new(response)
         when 503
-          raise WOTC::ServiceUnavailable, error_message(env)
+          raise WOTC::ServiceUnavailable.new(response)
         when 504
-          raise WOTC::GatewayTimeout, error_message(env)
+          raise WOTC::GatewayTimeout.new(response)
         end
       end
-    end
-
-    private
-
-    def error_message(env)
-      "\nURL: #{env.url}\nmethod: #{env.method} \nresponse status: #{env.status}\nresponse body: #{env.response.body}"
     end
   end
 end
