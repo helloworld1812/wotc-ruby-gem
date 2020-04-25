@@ -25,6 +25,11 @@ module WOTC
     def raw_errors
       @raw_errors
     end
+
+    # Ryan's TODO
+    def error_sentence
+
+    end
   end
 
   # Raised when wotc.com returns the HTTP status code 400

@@ -33,8 +33,15 @@ module WOTC
       end
 
       # Generate an auto fill WOTC url
-      def employee_auto_fill_wotc_url(employee_id)
-        get("employees/#{employee_id}/wotc/url")
+      def employee_auto_fill_wotc_url(employee_id, redirect=nil)
+        uri = URI.parse(redirect) rescue false
+        result = if uri.kind_of?(URI::HTTP) || uri.kind_of?(URI::HTTPS)
+          get("employees/#{employee_id}/wotc/url?redirect=#{redirect}")
+        else
+          get("employees/#{employee_id}/wotc/url")
+        end
+
+        return result.body["url"]
       end
 
       # Get employees with certified WOTC status

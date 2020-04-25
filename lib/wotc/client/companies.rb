@@ -20,6 +20,12 @@ module WOTC
           put("company/settings?company_id=#{company_id}", options)
         end
       end
+
+      # Get the info of company
+      def current_company
+        result = get('user').body
+        result["company"] 
+      end
     end
   end
 end
