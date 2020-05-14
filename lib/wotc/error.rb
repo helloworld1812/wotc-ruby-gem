@@ -26,9 +26,15 @@ module WOTC
       @raw_errors
     end
 
-    # Ryan's TODO
     def error_sentence
+      return if @raw_errors.nil?
 
+      array = []
+      @raw_errors.each do |_, v| 
+        array += v
+      end
+
+      array.join(' ')
     end
   end
 
