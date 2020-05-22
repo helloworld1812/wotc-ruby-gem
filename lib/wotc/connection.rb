@@ -20,7 +20,7 @@ module WOTC
         conn.authorization :Bearer, access_token
         # https://github.com/lostisland/faraday/issues/417#issuecomment-223413386
         conn.options[:timeout] = 10 # TODO: move it to configuration
-        conn.options[:open_timeout] = 2 # TODO: move it to configuration
+        conn.options[:open_timeout] = 5 # TODO: move it to configuration
         conn.request :json
 
         conn.use FaradayMiddleWare::RaiseHttpException
