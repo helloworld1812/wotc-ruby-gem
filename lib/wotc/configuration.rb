@@ -16,6 +16,8 @@ module WOTC
       :user_agent,
       :auto_paginate,
       :per_page,
+      :timeout,
+      :open_timeout,
     ].freeze
 
     # By default, don't set an access token
@@ -32,8 +34,14 @@ module WOTC
     # @note The default faraday adapter is Net::HTTP.
     DEFAULT_ADAPTER = Faraday.default_adapter
 
-    # By default, timeout after 20 seconds.
-    DEFAULT_CONNECTION_OPTIONS = {open_timeout: 20, timeout: 20}
+    # By default, don't set connection options.
+    DEFAULT_CONNECTION_OPTIONS = {}
+
+    # Default timeout time is 20 seconds
+    DEFAULT_TIMEOUT = 20
+
+    # By default, the open timeout is 20 seconds.
+    DEFAULT_OPEN_TIMEOUT = 20
 
     # By default, use sandbox environment 
     DEFAULT_HOST = 'https://sandbox.wotc.com'.freeze
@@ -87,6 +95,8 @@ module WOTC
       self.user_agent         = DEFAULT_USER_AGENT
       self.auto_paginate      = DEFAULT_AUTO_PAGINATE
       self.per_page           = DEFAULT_PER_PAGE
+      self.timeout            = DEFAULT_TIMEOUT
+      self.open_timeout       = DEFAULT_OPEN_TIMEOUT
     end
   end
 end

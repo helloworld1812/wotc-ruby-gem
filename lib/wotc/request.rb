@@ -38,10 +38,10 @@ module WOTC
 
       # return all results when enabled auto paginate
       last_response = response.dup
-      data = response["data"]
-      while last_response["next_page_url"]
-        last_response = get(last_response["next_page_url"] + "&per_page=#{per_page}")
-        data.concat(last_response["data"]) if last_response["data"].is_a?(Array)
+      data = response.body["data"]
+      while last_response.body["next_page_url"]
+        last_response = get(last_response.body["next_page_url"])
+        data.concat(last_response.body["data"]) if last_response.body["data"].is_a?(Array)
       end
 
       return data
