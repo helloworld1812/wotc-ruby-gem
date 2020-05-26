@@ -32,8 +32,8 @@ module WOTC
     # @note The default faraday adapter is Net::HTTP.
     DEFAULT_ADAPTER = Faraday.default_adapter
 
-    # By default, don't set any connection options
-    DEFAULT_CONNECTION_OPTIONS = {}
+    # By default, timeout after 20 seconds.
+    DEFAULT_CONNECTION_OPTIONS = {open_timeout: 20, timeout: 20}
 
     # By default, use sandbox environment 
     DEFAULT_HOST = 'https://sandbox.wotc.com'.freeze
