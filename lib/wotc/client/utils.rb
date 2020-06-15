@@ -10,6 +10,10 @@ module WOTC
       rescue => e
         return false
       end
+      
+      def wotc_calculator(options={})
+        post('wotc/calculator', options)
+      end
     end
   end
 end

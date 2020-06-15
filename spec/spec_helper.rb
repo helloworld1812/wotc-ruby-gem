@@ -12,8 +12,11 @@ end
 
 require File.expand_path('../../lib/wotc', __FILE__)
 
+WOTC.access_token = "test_token"
+
 require 'rspec'
 require 'webmock/rspec'
+require 'pry'
 
 RSpec.configure do |config|
   config.include WebMock::API
