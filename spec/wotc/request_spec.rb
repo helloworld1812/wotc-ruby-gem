@@ -25,35 +25,24 @@ describe WOTC::Request do
     end
   end
 
-  describe ".request" do
+  describe "#request" do
     it "should return current user" do
-      response = {
-          headers: {
-              content_type: "application/json; charset=utf-8"
-          },
-          body: fixture("user.json")
-      }
+      response = { headers: { content_type: "application/json; charset=utf-8" }, body: fixture("user.json") }
       stub_get("user").to_return(response)
-      result = WOTC::Client.new(access_token: "token").send(:get, WOTC::Configuration::DEFAULT_ENDPOINT + "user").body
+      result = WOTC::Client.new.send(:get, WOTC::Configuration::DEFAULT_ENDPOINT + "user").body
       expect(result["id"]).to eq(516)
     end
   end
 
-  # describe ".paginate" do
-  #   it "should return all employees" do
-  #     page1 = {
-  #         headers: {
-  #             content_type: "application/json; charset=utf-8"
-  #         },
-  #         body: fixture("employees/page1.json")
-  #     }
-  #
-  #     page1 = {
-  #         headers: {
-  #             content_type: "application/json; charset=utf-8"
-  #         },
-  #         body: fixture("employees/page1.json")
-  #     }
-  #   end
-  # end
+  describe "#paginate" do
+    it "should return all employees" do
+      first_page = { headers: { content_type: "application/json; charset=utf-8" }, body: fixture("employees/page1.json") }
+      second_page = { headers: { content_type: "application/json; charset=utf-8" }, body: fixture("employees/page2.json") }
+
+      stub_get("employees?per_page=20&page=1").to_return(first_page)
+      stub_get("employees?per_page=20&page=2").to_return(second_page)
+      result = WOTC::Client.new.send(:paginate, 'employees')
+      expect(result.count).to eq(40)
+    end
+  end
 end
