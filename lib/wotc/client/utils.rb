@@ -11,8 +11,10 @@ module WOTC
         return false
       end
       
+      # Pre-qualify an application of WOTC status
       def wotc_calculator(options={})
-        post('wotc/calculator', options)
+        result = post('wotc/calculator', options)
+        result.body == true
       end
     end
   end

@@ -20,7 +20,7 @@ describe WOTC::Client do
       }
       
       stub_post('wotc/calculator').to_return(:body => 'true', :headers => {:content_type => "application/json; charset=utf-8"})
-      expect(WOTC::Client.new.wotc_calculator(options).body).to be true
+      expect(WOTC::Client.new.wotc_calculator(options)).to be true
     end
     
     it 'should get false' do
@@ -34,7 +34,7 @@ describe WOTC::Client do
       }
       
       stub_post('wotc/calculator').to_return(:body => 'false', :headers => {:content_type => "application/json; charset=utf-8"})
-      expect(WOTC::Client.new.wotc_calculator(options).body).to be false
+      expect(WOTC::Client.new.wotc_calculator(options)).to be false
     end
   end
 end
