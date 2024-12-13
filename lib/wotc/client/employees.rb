@@ -24,7 +24,7 @@ module WOTC
 
       # Get employee's WOTC status
       def employee_wotc_status(employee_id)
-        get("employees#{employee_id}/wotc/status")
+        get("employees/#{employee_id}/wotc/status")
       end
 
       # Get wotc info for specific employee
