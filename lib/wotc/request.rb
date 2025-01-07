@@ -30,8 +30,8 @@ module WOTC
     # return just one page when auto_paginate is set false.
     def paginate(path, options={})
       per_page = options[:per_page] || options["per_page"] || @per_page
-      page = options[:page] || options["page"]
-      response = get(path+"?page=1&per_page=#{per_page}")
+      page = options[:page] || options["page"] || 1
+      response = get(path+"?page=#{page}&per_page=#{per_page}")
 
       # return one page results without pagination.
       return response if !@auto_paginate
