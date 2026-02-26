@@ -6,8 +6,8 @@ module WOTC
     def initialize(response)
       super
       @response = response.dup
-      @http_method = response.method.to_s
-      @url = response.url
+      @http_method = response.env.method.to_s
+      @url = response.env.url
       if response.body.is_a?(Hash) && !response.body.empty? && !response.body.fetch("errors", nil).nil?
         @raw_errors = response.body.fetch("errors")
       end
@@ -15,10 +15,10 @@ module WOTC
 
     def message
       <<-HEREDOC
-      URL: #{@response.url}
-      method: #{@response.method}
+      URL: #{@url}
+      method: #{@http_method}
       response status: #{@response.status}
-      response body: #{@response.response.body}
+      response body: #{@response.body}
       HEREDOC
     end
 
