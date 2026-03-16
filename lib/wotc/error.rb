@@ -4,21 +4,25 @@ module WOTC
     attr_reader :http_method, :url, :errors
 
     def initialize(response)
-      super
       @response = response.dup
-      @http_method = response.env.method.to_s
-      @url = response.env.url
-      if response.body.is_a?(Hash) && !response.body.empty? && !response.body.fetch("errors", nil).nil?
-        @raw_errors = response.body.fetch("errors")
+      env = response.env
+      # Use hash-style access for :method to avoid calling Kernel#method
+      @http_method = env[:method].to_s.upcase.presence || "UNKNOWN"
+      @url = env.url.to_s
+      @status = response.status
+      @body = response.body
+      if @body.is_a?(Hash) && !@body.empty? && !@body.fetch("errors", nil).nil?
+        @raw_errors = @body.fetch("errors")
       end
+      super()
     end
 
     def message
       <<-HEREDOC
       URL: #{@url}
       method: #{@http_method}
-      response status: #{@response.status}
-      response body: #{@response.body}
+      response status: #{@status}
+      response body: #{@body}
       HEREDOC
     end
 

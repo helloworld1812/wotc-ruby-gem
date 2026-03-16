@@ -7,7 +7,8 @@ module FaradayMiddleWare
     end
 
     def call(env)
-      @app.call(env).on_complete do |response|
+      response = @app.call(env)
+      response.on_complete do |_env|
         case response.status.to_i
         when 400
           raise WOTC::BadRequest.new(response)
