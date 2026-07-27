@@ -7,9 +7,7 @@ module WOTC
       @response = response.dup
       env = response.env
       # Use hash-style access for :method to avoid calling Kernel#method.
-      # Plain Ruby only: this gem does not depend on ActiveSupport, so String
-      # #presence is unavailable outside a Rails host and raised NoMethodError
-      # from inside the constructor of every error it tried to build.
+      # Plain Ruby only: this gem does not depend on ActiveSupport.
       http_method = env[:method].to_s.upcase
       @http_method = http_method.empty? ? "UNKNOWN" : http_method
       @url = env.url.to_s

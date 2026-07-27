@@ -17,13 +17,8 @@ module FaradayMiddleWare
     private
 
     # Every 4xx and 5xx raises. The named statuses get their own class; anything
-    # else falls back to ClientError or ServerError.
-    #
-    # Previously only ten statuses were enumerated and everything else was
-    # returned as if it had succeeded. A 403 then reached callers as an ordinary
-    # body with no "id", which read as a revoked access token, and a 405 looked
-    # like a valid answer with a missing field. Silence is the defect, so the
-    # default branch matters more than any single status added to the list.
+    # else falls back to ClientError or ServerError, so a status we have not
+    # thought about can never be mistaken for a successful response.
     def error_class(status)
       case status
       when 400 then WOTC::BadRequest

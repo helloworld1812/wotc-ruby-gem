@@ -9,7 +9,7 @@ module WOTC
       #
       # Only a 401 means revoked. A 403, a 5xx, a timeout or a body we cannot
       # read means we could not tell, and callers must not treat that as
-      # revocation — doing so disabled 51 employers during an upstream outage.
+      # revocation.
       def token_state
         body = get('user').body
         return :valid if body.is_a?(Hash) && !body['id'].nil?
