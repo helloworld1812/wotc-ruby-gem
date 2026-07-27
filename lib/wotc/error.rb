@@ -6,8 +6,12 @@ module WOTC
     def initialize(response)
       @response = response.dup
       env = response.env
-      # Use hash-style access for :method to avoid calling Kernel#method
-      @http_method = env[:method].to_s.upcase.presence || "UNKNOWN"
+      # Use hash-style access for :method to avoid calling Kernel#method.
+      # Plain Ruby only: this gem does not depend on ActiveSupport, so String
+      # #presence is unavailable outside a Rails host and raised NoMethodError
+      # from inside the constructor of every error it tried to build.
+      http_method = env[:method].to_s.upcase
+      @http_method = http_method.empty? ? "UNKNOWN" : http_method
       @url = env.url.to_s
       @status = response.status
       @body = response.body
@@ -42,26 +46,44 @@ module WOTC
     end
   end
 
-  # Raised when wotc.com returns the HTTP status code 400
-  class BadRequest < Error; end
+  # Any 4xx we do not name below. Our request was not accepted.
+  class ClientError < Error; end
 
-  # Raised when wotc.com returns the HTTP status code 401
-  class Unauthorized < Error; end
+  # Any 5xx we do not name below. wotc.com could not answer. Retryable.
+  class ServerError < Error; end
+
+  # Raised when wotc.com returns the HTTP status code 400
+  class BadRequest < ClientError; end
+
+  # Raised when wotc.com returns the HTTP status code 401. This is the only
+  # status that means our access token was rejected.
+  class Unauthorized < ClientError; end
+
+  # Raised when wotc.com returns the HTTP status code 403. Distinct from 401:
+  # the token authenticated, the action was refused, often because the resource
+  # does not exist or does not belong to this account.
+  class Forbidden < ClientError; end
 
   # Raised when wotc.com returns the HTTP status code 404
-  class NotFound < Error; end
+  class NotFound < ClientError; end
+
+  # Raised when wotc.com returns the HTTP status code 422
+  class UnprocessableEntity < ClientError; end
+
+  # Raised when wotc.com returns the HTTP status code 429
+  class TooManyRequests < ClientError; end
 
   # Raised when wotc.com returns the HTTP status code 500
-  class InternalServerError < Error; end
+  class InternalServerError < ServerError; end
 
   # Raised when wotc.com returns the HTTP status code 502
-  class BadGateway < Error; end
+  class BadGateway < ServerError; end
 
   # Raised when wotc.com returns the HTTP status code 503
-  class ServiceUnavailable < Error; end
+  class ServiceUnavailable < ServerError; end
 
   # Raised when wotc.com returns the HTTP status code 504
-  class GatewayTimeout < Error; end
+  class GatewayTimeout < ServerError; end
 
   # Raised when client fails to provide required parameters.
   class MissingRequiredArgument < Error; end
