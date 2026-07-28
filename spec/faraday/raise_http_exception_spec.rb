@@ -65,6 +65,29 @@ describe FaradayMiddleWare::RaiseHttpException do
     end
   end
 
+  # Pins the middleware order contract: the JSON parser must run before the
+  # raise, so error bodies arrive parsed. CreateCompanyService's field-level
+  # error reporting (raw_errors/error_sentence) depends on this.
+  it 'delivers the parsed errors hash on a 4xx' do
+    stub_user(400, '{"errors":{"ein":["The ein has already been taken."]}}')
+
+    error = begin
+      WOTC::Client.new.current_user
+      nil
+    rescue WOTC::BadRequest => e
+      e
+    end
+
+    expect(error).not_to be_nil
+    expect(error.raw_errors).to eq('ein' => ['The ein has already been taken.'])
+    expect(error.error_sentence).to eq('The ein has already been taken.')
+  end
+
+  it 'keeps MissingRequiredArgument raisable with a plain message' do
+    expect { raise WOTC::MissingRequiredArgument, 'employee_id is required' }
+      .to raise_error(WOTC::MissingRequiredArgument, 'employee_id is required')
+  end
+
   it 'reports the status and body on the error' do
     stub_user(403, '{"message":"Unauthorized Action Attempt"}')
 

@@ -83,6 +83,8 @@ module WOTC
   # Raised when wotc.com returns the HTTP status code 504
   class GatewayTimeout < ServerError; end
 
-  # Raised when client fails to provide required parameters.
-  class MissingRequiredArgument < Error; end
+  # Raised when client code fails to provide required parameters — before any
+  # HTTP request exists. Unlike every class above it carries a plain message,
+  # not a Faraday::Response, so it cannot inherit Error#initialize.
+  class MissingRequiredArgument < StandardError; end
 end
