@@ -17,7 +17,9 @@ module WOTC
       }.merge(connection_options)
 
       Faraday::Connection.new(options) do |conn|
-        conn.authorization :Bearer, access_token
+        # Faraday 1.8+ middleware form; Connection#authorization is deprecated
+        # and removed in Faraday 2.0.
+        conn.request :authorization, :Bearer, access_token
         # https://github.com/lostisland/faraday/issues/417#issuecomment-223413386
         conn.options[:timeout] = timeout 
         conn.options[:open_timeout] = open_timeout 

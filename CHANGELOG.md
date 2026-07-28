@@ -17,6 +17,10 @@
 - `WOTC::MissingRequiredArgument` now subclasses `StandardError` and takes a
   plain message; it previously inherited `Error#initialize(response)` and
   crashed at the raise site.
+- Auth header set via the `request :authorization` middleware instead of the
+  deprecated `Connection#authorization` (silences the per-request warning;
+  faraday `>= 1.8` now required). Dropped an unused `require 'base64'` that
+  triggered the Ruby 3.4 default-gem warning.
 
 ## 0.1.14 (2026-03-16)
 

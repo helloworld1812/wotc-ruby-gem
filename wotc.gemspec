@@ -40,7 +40,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", ">= 3.9.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "webmock"
-  spec.add_runtime_dependency 'faraday'
+  # >= 1.8 for the unified `request :authorization` middleware.
+  spec.add_runtime_dependency 'faraday', '>= 1.8'
   spec.add_runtime_dependency 'faraday_middleware'
   spec.add_runtime_dependency 'addressable'
 end
