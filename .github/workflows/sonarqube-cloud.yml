@@ -1,0 +1,20 @@
+name: SonarQube Cloud Scan
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+# SonarQube Cloud (org: helloworld1812). No SONAR_HOST_URL — the self-hosted server was
+# retired and returns HTTP 503. SONAR_CLOUD_TOKEN is an org-level secret.
+jobs:
+  scan:
+    name: scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
